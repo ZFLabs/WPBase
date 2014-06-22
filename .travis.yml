@@ -9,13 +9,15 @@ matrix:
     - php: 5.5
 
 before_script:
+  - git submodule update --init
+  - cd ..
   - git clone git://github.com/zendframework/ZendSkeletonApplication.git
   - cd ZendSkeletonApplication
   - rm .gitmodules
   - git rm --cached vendor/ZF2
   - rm config/application.config.php && cp ../WPBase/.travis/application.config.php config/
   - cp ../WPBase/.travis/composer.json ./
-  - composer install --dev --prefer-source
+  - COMPOSER_PROCESS_TIMEOUT=9000 composer install --dev --prefer-source
   - rm -rf vendor/juizmill/wp-base
   - cp -r ../WPBase vendor/juizmill/
   - mv vendor/doctrine/WPBase vendor/juizmill/wp-base
