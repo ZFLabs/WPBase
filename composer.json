@@ -16,8 +16,11 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "zendframework/zendframework": "2.*",
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "zendframework/zendframework": "~2.2",
+        "phpunit/phpunit": "~3.7",
         "doctrine/doctrine-orm-module": "dev-master"
     },
     "autoload": {

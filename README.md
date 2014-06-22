@@ -11,7 +11,7 @@ Para instalar é bastante simples, adicione no composer.json:
 
     "juizmill/wp-base": "dev-master"
 
-Prossemo passo é atualizar o composer e pedir para instalar:
+Próximo passo é atualizar o composer e pedir para instalar:
 
     php composer.phar self-update
     php composer.phar install
@@ -35,7 +35,7 @@ Você pode chamar os seguintes partials:
   - **partials/breadcrumbs**
     - Retorna um breadcrumb
   - **partials/flashMessenger**
-    - Retorna mensagens através do flashMesseger
+    - Retorna mensagens através do flashMessenger
   - **partials/formElementErrors**
     - Retorna mensagem de erros ocorrido no formulário
   - **partials/modal.delete.message**
