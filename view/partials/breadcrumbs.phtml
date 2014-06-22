@@ -1,0 +1,29 @@
+<?php
+/**
+ * @var $container \Zend\View\Helper\Navigation\Breadcrumbs
+ * @var $navigation \Zend\Navigation\Navigation
+ * @var $page \Zend\Navigation\Page\Mvc
+ * @var $p \Zend\Navigation\Page\Mvc
+ */
+
+$container = $this->navigation()->breadcrumbs();
+$navigation = $container->getContainer();
+$active = $container->findActive($navigation);
+?>
+
+<ul class="breadcrumb">
+
+    <?php foreach($navigation as $page): ?>
+
+        <li><strong><i class="glyphicon glyphicon-th-large"></i> <?php echo $page->getLabel(); ?></strong></li>
+
+        <?php foreach($page->getPages() as $p): ?>
+
+        <?php if(!$p->isActive()): ?>
+            <li><a href="<?php echo $p->getHref(); ?>"><?php echo $p->getLabel(); ?></a></li>
+        <?php else: ?>
+            <li class="active"><?php echo $p->getLabel(); ?></li>
+                <?php break; ?>
+        <?php endif; ?>
+    <?php endforeach; endforeach ; ?>
+</ul>

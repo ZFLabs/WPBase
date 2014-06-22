@@ -1,0 +1,47 @@
+<?php if ($this->pageCount > 1): ?>
+    <?php
+        $urlPattern = $_SERVER['REQUEST_URI'];
+        $formatUrl = function ($page) use ($urlPattern) {
+            if (!preg_match('/pagina/', $urlPattern))
+                return $urlPattern . '/pagina/' . (int) $page;
+            else
+                return preg_replace('@/pagina/(\d+)@', '/pagina/' . (int) $page, $urlPattern);
+        };
+    ?>
+
+    <p style="margin-top: 25px; margin-bottom: 0" class="text-info">Pagina <strong class="text-danger"><?php echo $this->current;?></strong> de <strong class="text-danger"><?php echo $this->pageCount;?></strong></p>
+    <ul style="margin-top: 0" class="pagination pagination-sm">
+        <?php if (isset($this->previous)): ?>
+            <li><a class="tooltips" href="<?php echo $formatUrl($this->first) ?>" data-toggle="tooltip" data-placement="top" title="Ir para primeira pagina"><i class="glyphicon glyphicon-fast-backward"></i></a></li>
+            <li><a class="tooltips" href="<?php echo $formatUrl($this->previous) ?>" data-toggle="tooltip" data-placement="top" title="Ir para pagina anterior"><i class="glyphicon glyphicon-circle-arrow-left"></i></a></li>
+        <?php else: ?>
+            <li class="disabled"><a class="tooltips" href="#" onclick="return false;" data-toggle="tooltip" data-placement="top" title="Ir para primeira pagina"><i class="glyphicon glyphicon-fast-backward"></i></a></li>
+            <li class="disabled"><a class="tooltips" href="#" onclick="return false;" data-toggle="tooltip" data-placement="top" title="Ir para pagina anterior"><i class="glyphicon glyphicon-circle-arrow-left"></i></a></li>
+        <?php endif; ?>
+
+        <?php foreach ($this->pagesInRange as $page): ?>
+
+            <?php if ($page != $this->current): ?>
+                <li><a href="<?php echo $formatUrl($page); ?>"><?php echo $page; ?> </a></li>
+            <?php else: ?>
+                <li class="active"><a href=""><?php echo $page; ?> </a></li>
+            <?php endif; ?>
+
+        <?php endforeach; ?>
+
+        <?php if (isset($this->next)): ?>
+            <li><a class="tooltips" href="<?php echo $formatUrl($this->next); ?>" data-toggle="tooltip" data-placement="top" title="Ir para próxima pagina"><i class="glyphicon glyphicon-circle-arrow-right"></i></a></li>
+            <li><a class="tooltips" href="<?php echo $formatUrl($this->last); ?>" data-toggle="tooltip" data-placement="top" title="Ir para última pagina"><i class="glyphicon glyphicon-fast-forward"></i></a></li>
+        <?php else: ?>
+            <li class="disabled"><a class="tooltips" href="#" onclick="return false;" data-toggle="tooltip" data-placement="top" title="Ir para próxima pagina"><i class="glyphicon glyphicon-circle-arrow-right"></i></a></li>
+            <li class="disabled"><a class="tooltips" href="#" onclick="return false;" data-toggle="tooltip" data-placement="top" title="Ir para última pagina"><i class="glyphicon glyphicon-fast-forward"></i></a></li>
+        <?php endif; ?>
+    </ul>
+
+    <?php $this->inlineScript()->captureStart(); ?>
+        $(document).ready(function(){
+            $('.tooltips').tooltip();
+        });
+    <?php $this->inlineScript()->captureEnd();?>
+
+<?php endif; ?>

@@ -1,0 +1,29 @@
+<?php
+//MSG de Sucesso
+echo $this->flashMessenger()
+    ->setMessageOpenFormat('<div%s>')
+    ->setMessageSeparatorString('<p></p>')
+    ->setMessageCloseString('<button type="button" class="close" data-dismiss="alert">×</button></div>')
+    ->render('success', array('alert alert-success'));
+
+//MSG de Erro
+echo $this->flashMessenger()
+    ->setMessageOpenFormat('<div%s>')
+    ->setMessageSeparatorString('<p></p>')
+    ->setMessageCloseString('<button type="button" class="close" data-dismiss="alert">×</button></div>')
+    ->render('error', array('alert alert-danger'));
+
+//MSG de Info
+echo $this->flashMessenger()
+    ->setMessageOpenFormat('<div%s>')
+    ->setMessageSeparatorString('<p></p>')
+    ->setMessageCloseString('<button type="button" class="close" data-dismiss="alert">×</button></div>')
+    ->render('info', array('alert alert-info'));
+
+//MSG de Info
+echo $this->flashMessenger()
+    ->setMessageOpenFormat('<div%s>')
+    ->setMessageSeparatorString('<p></p>')
+    ->setMessageCloseString('<button type="button" class="close" data-dismiss="alert">×</button></div>')
+    ->render('warning', array('alert alert-warning'));
+?>

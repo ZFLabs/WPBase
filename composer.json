@@ -1,0 +1,29 @@
+{
+    "name": "juizmill/wp-base",
+    "description": "Módulo base para criar APP com Zend Framework 2",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "module",
+        "zf2",
+        "WebPatterns"
+    ],
+    "homepage": "http://blog.webpatterns.com.br",
+    "authors": [
+        {
+            "name": "Jesus Vieira",
+            "email": "jesusvieiradelima@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*",
+        "doctrine/doctrine-orm-module": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "WPBase": "src/"
+        }
+    }
+
+}

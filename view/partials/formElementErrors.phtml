@@ -1,0 +1,11 @@
+<?php
+
+    //MSG Form
+    $this->formElementErrors()
+        ->setMessageOpenFormat('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">×</button>')
+        ->setMessageSeparatorString('<p></p>')
+        ->setMessageCloseString('</div>')->render($this->form);
+
+    //MSG geral
+    echo $this->partial('partials/flashMessenger');
+?>
