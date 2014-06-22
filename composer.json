@@ -16,16 +16,14 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3"
-    },
-    "require-dev": {
-        "zendframework/zendframework": "~2.2",
-        "phpunit/phpunit": "~3.7",
-        "doctrine/doctrine-orm-module": "dev-master"
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "@stable",
+        "phpunit/phpunit": "@stable",
+        "doctrine/doctrine-orm-module": "@stable"
     },
     "autoload": {
         "psr-0": {
-            "WPBase": "src/"
+            "WPBase\\": "src/"
         }
     }
 
