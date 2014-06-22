@@ -6,7 +6,8 @@
     "keywords": [
         "module",
         "zf2",
-        "WebPatterns"
+        "WebPatterns",
+        "base"
     ],
     "homepage": "http://blog.webpatterns.com.br",
     "authors": [
@@ -16,10 +17,16 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "zendframework/zendframework": "@stable",
-        "phpunit/phpunit": "@stable",
-        "doctrine/doctrine-orm-module": "@stable"
+        "php": ">=5.4"
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "zendframework/zendframework": "dev-master",
+        "doctrine/doctrine-orm-module": "dev-master"
+    },
+    "suggest": {
+        "zendframework/zend-developer-tools": "zend-developer-tools if you want to profile operations executed by the ORM during development",
+        "phpunit/phpunit": "PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of the xUnit architecture for unit testing frameworks."
     },
     "autoload": {
         "psr-0": {

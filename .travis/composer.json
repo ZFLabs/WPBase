@@ -1,0 +1,7 @@
+{
+  "minimum-stability": "dev",
+    "require-dev": {
+        "zendframework/zendframework": "dev-master",
+        "doctrine/doctrine-orm-module": "dev-master"
+    }
+}
