@@ -24,7 +24,8 @@ before_script:
 
 script:
   - cd vendor/juizmill/wp-base/tests
-  - phpunit
+  - mkdir -p build/logs
+  - phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
   - php vendor/bin/coveralls -v
