@@ -25,3 +25,6 @@ before_script:
 script:
   - cd vendor/juizmill/wp-base/tests
   - phpunit
+
+after_script:
+  - php vendor/bin/coveralls -v

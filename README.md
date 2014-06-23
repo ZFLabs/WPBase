@@ -1,6 +1,9 @@
 WPBase
 =======================
 
+[![Build Status](https://travis-ci.org/juizmill/WPBase.svg?branch=master)](https://travis-ci.org/juizmill/WPBase)
+[![Coverage Status](https://coveralls.io/repos/juizmill/WPBase/badge.png)](https://coveralls.io/r/juizmill/WPBase)
+
 Introdução
 ------------
 Módulo base para criar APP com Zend Framework 2
