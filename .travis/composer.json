@@ -1,6 +1,7 @@
 {
   "minimum-stability": "dev",
     "require-dev": {
+        "juizmill/wp-base": "dev-master",
         "zendframework/zendframework": "dev-master",
         "doctrine/doctrine-orm-module": "dev-master"
     }

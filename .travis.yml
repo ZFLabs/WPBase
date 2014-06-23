@@ -20,4 +20,4 @@ before_script:
   - COMPOSER_PROCESS_TIMEOUT=9000 composer install --dev --prefer-source
   - rm -rf vendor/juizmill/wp-base
   - cp -r ../WPBase vendor/juizmill/
-  - mv vendor/doctrine/WPBase vendor/juizmill/wp-base
+  - mv vendor/juizmill/WPBase vendor/juizmill/wp-base
