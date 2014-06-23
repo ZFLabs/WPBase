@@ -22,8 +22,7 @@
     "minimum-stability": "dev",
     "require-dev": {
         "zendframework/zendframework": "dev-master",
-        "doctrine/doctrine-orm-module": "dev-master",
-        "satooshi/php-coveralls": "dev-master"
+        "doctrine/doctrine-orm-module": "dev-master"
     },
     "suggest": {
         "zendframework/zend-developer-tools": "zend-developer-tools if you want to profile operations executed by the ORM during development",
