@@ -21,3 +21,7 @@ before_script:
   - rm -rf vendor/juizmill/wp-base
   - cp -r ../WPBase vendor/juizmill/
   - mv vendor/juizmill/WPBase vendor/juizmill/wp-base
+
+script:
+  - cd vendor/juizmill/wp-base/tests
+  - phpunit
