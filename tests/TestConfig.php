@@ -7,8 +7,12 @@ return array(
       'DoctrineModule',
       'DoctrineORMModule',
       'WPBase',
+      'Tasck'
     ),
     'module_listener_options' => array(
+        'config_glob_paths' => array(
+            __DIR__.'/config/autoload/{,*.}{global,local}.php',
+        ),
         'module_paths' => array(
             './module',
             './vendor',
@@ -17,6 +21,8 @@ return array(
     //Configuração para não carregar as entidades dos módulos
     'not_load_entity' => array(
         'WPBase',
-        'WPBaseTest'
-    )
+        'WPBaseTest',
+
+    ),
+
 );

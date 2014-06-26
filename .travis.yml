@@ -23,9 +23,11 @@ before_script:
   - mv vendor/juizmill/WPBase vendor/juizmill/wp-base
 
 script:
-  - cd vendor/juizmill/wp-base/tests
+  - cd ./
   - mkdir -p build/logs
+  - cd vendor/juizmill/wp-base/tests
   - phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
-  - php vendor/bin/coveralls -v
+  - cd ./
+  - php bin/coveralls -v

@@ -5,5 +5,8 @@
         "zendframework/zendframework": "dev-master",
         "doctrine/doctrine-orm-module": "dev-master",
         "satooshi/php-coveralls": "dev-master"
+    },
+    "config": {
+        "bin-dir": "bin"
     }
 }

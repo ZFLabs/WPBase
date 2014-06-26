@@ -15,6 +15,8 @@ class TestCaseController extends AbstractHttpControllerTestCase
     {
         parent::setUp();
 
+        $this->configTest = __DIR__. '/../../TestConfig.php';
+
         if (! file_exists($this->configTest)) {
             throw new RuntimeException('Arquivo '.$this->configTest.' não foi encontrado!');
         }

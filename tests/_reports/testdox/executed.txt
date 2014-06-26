@@ -1,4 +1,0 @@
-WPBaseTest\Entity\AbstractWPEntity
- [x] Class exist
- [x] Verifica se retorna to array
-

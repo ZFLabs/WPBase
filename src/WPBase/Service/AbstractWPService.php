@@ -2,7 +2,6 @@
 namespace WPBase\Service;
 
 use Doctrine\ORM\EntityManager;
-use WPBase\Logger\WPLogger;
 use Zend\Stdlib\Hydrator\ClassMethods;
 
 /**
@@ -10,7 +9,7 @@ use Zend\Stdlib\Hydrator\ClassMethods;
  *
  * @package WPBase\Service
  */
-class AbstractWPService
+abstract class AbstractWPService
 {
     protected $entity;
     protected $manager;
@@ -56,49 +55,37 @@ class AbstractWPService
      */
     public function save(Array $data, $id = null)
     {
+        $entity = null;
 
-        try{
-            $entity = null;
-
-            if((!is_null($id)) && $id > 0){
-                $entity = (new ClassMethods())->hydrate(array_merge(array('id' => $id), $data), $this->getEntity());
-                $this->manager->merge($entity);
-            }else{
-                $entity = new $this->entity($data);
-                $this->manager->persist($entity);
-            }
-            $this->manager->flush();
-
-            return true;
-
-        }catch (\Exception $e){
-            WPLogger::addWriter($e);
-            return false;
+        if((!is_null($id)) && $id > 0){
+            $entity = (new ClassMethods())->hydrate(array_merge(array('id' => $id), $data), $this->getEntity());
+            $this->manager->merge($entity);
+        }else{
+            $entity = new $this->entity($data);
+            $this->manager->persist($entity);
         }
+        $this->manager->flush();
 
+        return true;
     }
 
     /**
      * @param $id
      *
      * @return bool
+     * @throws \InvalidArgumentException
      */
     public function remove($id)
     {
-        try{
-            $entity = $this->getRepositoty()->find($id);
+        if(!is_integer($id))
+            throw new \InvalidArgumentException("O campo ID deve ser numérico");
 
-            if(!$entity || is_null($entity))
-                return false;
+        $entity = $this->manager->getReference(get_class($this->getEntity()), $id);
 
-            $this->manager->remove($entity);
-            $this->manager->flush();
+        $this->manager->remove($entity);
+        $this->manager->flush();
 
-            return true;
-
-        }catch (\Exception $e){
-            return false;
-        }
+        return true;
     }
 
     /**
