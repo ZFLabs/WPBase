@@ -5,6 +5,8 @@ namespace WPBaseTest\Logger;
 use WPBaseTest\Framework\TestCase;
 use WPBase\Logger\WPLogger;
 
+
+
 class WPLoggerTest extends TestCase
 {
     public function testClassExist()
@@ -20,13 +22,13 @@ class WPLoggerTest extends TestCase
     public function testVerificaSeCriaArquivoDeLog()
     {
         //Remove diretório se existir
-        if(file_exists('./data/log/error_exception.log')){
-            self::delTree('./data/log');
+        if(file_exists('data/log/error_exception.log')){
+            self::delTree('data/log');
         }
 
         WPLogger::addWriter($this->getException());
 
-        $this->assertTrue(file_exists('./data/log/error_exception.log'));
+        $this->assertTrue(file_exists('data/log/error_exception.log'));
     }
 
     private function getException()
