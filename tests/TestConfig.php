@@ -7,7 +7,6 @@ return array(
       'DoctrineModule',
       'DoctrineORMModule',
       'WPBase',
-      'Tasck'
     ),
     'module_listener_options' => array(
         'config_glob_paths' => array(
