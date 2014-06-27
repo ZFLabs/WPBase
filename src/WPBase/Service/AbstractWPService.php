@@ -10,7 +10,7 @@ use Zend\Stdlib\Hydrator\ClassMethods;
  *
  * @package WPBase\Service
  */
-class AbstractWPService
+abstract class AbstractWPService
 {
     protected $entity;
     protected $manager;
@@ -126,4 +126,4 @@ class AbstractWPService
     {
         return $this->getRepositoty()->findAll();
     }
-} 
+}
