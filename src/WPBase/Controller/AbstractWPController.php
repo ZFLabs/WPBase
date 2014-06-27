@@ -5,7 +5,6 @@ namespace WPBase\Controller;
 use Doctrine\Common\Collections\Criteria;
 use DoctrineModule\Paginator\Adapter\Selectable;
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\Mvc\Exception\InvalidArgumentException;
 use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
 use Zend\Paginator\Paginator;
@@ -26,26 +25,11 @@ abstract class AbstractWPController extends AbstractActionController
     public $route;
     public $form;
 
-    public function __construct()
-    {
-        if(is_null($this->service))
-            throw new InvalidArgumentException('Service is not defined.');
-
-        if(is_null($this->controller))
-            throw new InvalidArgumentException('Controller is not defined.');
-
-        if(is_null($this->route))
-            throw new InvalidArgumentException('Route is not defined.');
-
-        if(is_null($this->form))
-            throw new InvalidArgumentException('Form is not defined.');
-    }
-
     /**
      * listarAction listar todos os registros
      * @return \Zend\View\Model\ViewModel
      */
-    public function listarAction()
+    public function indexAction()
     {
         //Caso tenha na listagem a possibilidade de selecionar vários registro para excluir,
         //Esta te IF verifica se é POST, caso seja ele percorre todos os registros e deleta, conforme

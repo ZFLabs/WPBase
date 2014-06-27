@@ -9,25 +9,16 @@ matrix:
     - php: 5.5
 
 before_script:
-  - git submodule update --init
-  - cd ..
-  - git clone git://github.com/zendframework/ZendSkeletonApplication.git
-  - cd ZendSkeletonApplication
-  - rm .gitmodules
-  - git rm --cached vendor/ZF2
-  - rm config/application.config.php && cp ../WPBase/.travis/application.config.php config/
-  - cp ../WPBase/.travis/composer.json ./
-  - COMPOSER_PROCESS_TIMEOUT=9000 composer install --dev --prefer-source
-  - rm -rf vendor/juizmill/wp-base
-  - cp -r ../WPBase vendor/juizmill/
-  - mv vendor/juizmill/WPBase vendor/juizmill/wp-base
+  - curl -s https://getcomposer.org/installer | php
+  - php composer.phar install --prefer-source --dev --no-interaction
+  - mkdir -p build/logs
 
 script:
-  - cd vendor/juizmill/wp-base/tests
   - mkdir -p build/logs
-  - phpunit --coverage-clover build/logs/clover.xml
+  - cd tests/
+  - ../vendor/bin/phpunit
+
 
 after_script:
-  - cd ./
-  - cd ZendSkeletonApplication
-  - php bin/coveralls -v
+  - php ../vendor/bin/coveralls -v
+

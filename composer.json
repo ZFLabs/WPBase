@@ -17,20 +17,30 @@
         }
     ],
     "require": {
-        "php": ">=5.4"
+        "php": ">=5.4",
+        "zendframework/zend-mvc": "2.*",
+        "zendframework/zend-serializer": "2.*",
+        "zendframework/zend-version": "2.*",
+        "zendframework/zend-form": "2.*",
+        "zendframework/zend-mail": "2.*",
+        "zendframework/zend-mime": "2.*",
+        "zendframework/zend-test": "2.*",
+        "zendframework/zend-stdlib": "2.*"
     },
     "minimum-stability": "dev",
     "require-dev": {
-        "zendframework/zendframework": "dev-master",
-        "doctrine/doctrine-orm-module": "dev-master"
+        "doctrine/doctrine-orm-module": "dev-master",
+        "phpunit/phpunit": "dev-master",
+        "satooshi/php-coveralls": "dev-master",
+        "spiffy/spiffy-test": "dev-master"
     },
     "suggest": {
-        "zendframework/zend-developer-tools": "zend-developer-tools if you want to profile operations executed by the ORM during development",
-        "phpunit/phpunit": "PHPUnit is a programmer-oriented testing framework for PHP. It is an instance of the xUnit architecture for unit testing frameworks."
+        "zendframework/zend-developer-tools": "zend-developer-tools if you want to profile operations executed by the ORM during development"
     },
     "autoload": {
         "psr-0": {
-            "WPBase\\": "src/"
+            "WPBase\\": "src/",
+            "SpiffyRoutesTest": "test/"
         }
     }
 

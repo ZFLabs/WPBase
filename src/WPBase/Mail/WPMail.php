@@ -60,7 +60,7 @@ class WPMail extends Message implements ServiceManagerAwareInterface
      */
     public function getSmtpOptions()
     {
-        $config = $this->getServiceManaget()->get('Config');
+        $config = $this->getServiceManager()->get('Config');
         return new SmtpOptions($config['mail']);
     }
 
@@ -83,14 +83,12 @@ class WPMail extends Message implements ServiceManagerAwareInterface
      */
     public function renderView()
     {
-        $model = new ViewModel;
+        $model = new ViewModel();
         $model->setTemplate($this->page);
         $model->setOption('has_parent',true);
         $model->setVariables($this->getData());
 
-        $view = $this->getServiceManaget()->get('View');
-
-        return $view->render($model);
+        return $model;
     }
 
     /**
@@ -119,7 +117,7 @@ class WPMail extends Message implements ServiceManagerAwareInterface
      */
     public function send()
     {
-        $this->smtpTransport()->send($this);
+        return $this->smtpTransport()->send($this);
     }
 
     /**
@@ -137,7 +135,7 @@ class WPMail extends Message implements ServiceManagerAwareInterface
      *
      * @return \Zend\ServiceManager\ServiceManager
      */
-    public function getServiceManaget()
+    public function getServiceManager()
     {
         return $this->serviceManager;
     }

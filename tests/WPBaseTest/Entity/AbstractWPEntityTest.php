@@ -2,7 +2,7 @@
 
 namespace WPBaseTest\Entity;
 
-use WPBaseTest\Framework\TestCase;
+use SpiffyTest\Framework\TestCase;
 use WPBase\Entity\AbstractWPEntity;
 
 class AbstractWPEntityTest extends TestCase

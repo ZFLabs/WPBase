@@ -79,7 +79,7 @@ abstract class AbstractWPFormHandle
     }
 
     /**
-     * @return mixed
+     * @return \Zend\Form\Form
      */
     public function getForm()
     {
