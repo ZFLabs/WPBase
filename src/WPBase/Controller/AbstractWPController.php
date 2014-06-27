@@ -26,7 +26,7 @@ abstract class AbstractWPController extends AbstractActionController
     public $form;
 
     /**
-     * listarAction listar todos os registros
+     * indexAction index todos os registros
      * @return \Zend\View\Model\ViewModel
      */
     public function indexAction()
@@ -40,12 +40,12 @@ abstract class AbstractWPController extends AbstractActionController
             foreach($data['post'] as $id){
                 if(!  $this->getWPService()->remove($id)){
                     $this->flashMessenger()->addInfoMessage('Alguns registros não foram deletados.');
-                    return $this->redirect()->toRoute($this->route, array('controller' => $this->controller, 'action' => 'listar'));
+                    return $this->redirect()->toRoute($this->route, array('controller' => $this->controller, 'action' => 'index'));
                 }
             }
 
             $this->flashMessenger()->addSuccessMessage('Registro(s) removido(s) com sucesso!');
-            return $this->redirect()->toRoute($this->route, array('controller' => $this->controller, 'action' => 'listar'));
+            return $this->redirect()->toRoute($this->route, array('controller' => $this->controller, 'action' => 'index'));
         }
 
         $paginator = new Paginator(new Selectable($this->getWPService()->getRepositoty(), new Criteria(null, array('id' => 'DESC'), null, null)));
@@ -61,14 +61,9 @@ abstract class AbstractWPController extends AbstractActionController
      */
     public function novoAction()
     {
-        /**
-         * @var $form \WPBase\Form\AbstractWPFormHandle
-         */
-        $form = $this->getServiceLocator()->get($this->form);
-
         if($this->getRequest()->isPost()){
 
-            $handle = $form->handle($this->getRequest()->getPost()->toArray());
+            $handle = $this->getWPForm()->handle($this->getRequest()->getPost()->toArray());
 
             if($handle === true){
                 $this->flashMessenger()->addSuccessMessage('Cadastrado com sucesso!');
@@ -77,7 +72,7 @@ abstract class AbstractWPController extends AbstractActionController
                 $this->flashMessenger()->addWarningMessage('Não foi possível cadastrar!');
             }
         }
-        return new ViewModel(array('form' => $form->getForm()));
+        return new ViewModel(array('form' => $this->getWPForm()->getForm()));
     }
 
     /**
@@ -93,7 +88,7 @@ abstract class AbstractWPController extends AbstractActionController
             /**
              * @var $formHandle \WPBase\Form\AbstractWPFormHandle
              */
-            $formHandle = $this->getServiceLocator()->get($this->form);
+            $formHandle = $this->getWPForm();
             $form = $formHandle->getForm()->setData($entity->toArray());
 
             if($this->getRequest()->isPost()){
@@ -108,10 +103,10 @@ abstract class AbstractWPController extends AbstractActionController
                 }
             }
 
-            return new ViewModel(array('form' => $form, 'id' => $this->params()->fromRoute('id')));
+            return new ViewModel(array('form' => $this->getWPForm(), 'id' => $this->params()->fromRoute('id')));
         }
         $this->flashMessenger()->addWarningMessage('Registro não encontrado');
-        return $this->redirect()->toRoute($this->route, array('controller' => $this->controller, 'action' => 'listar'));
+        return $this->redirect()->toRoute($this->route, array('controller' => $this->controller, 'action' => 'index'));
     }
 
     /**
@@ -124,12 +119,20 @@ abstract class AbstractWPController extends AbstractActionController
 
         if(!$entity){
             $this->flashMessenger()->addWarningMessage('Registro não encontrado');
-            return $this->redirect()->toRoute($this->route, array('controller' => $this->controller, 'action' => 'listar'));
+            return $this->redirect()->toRoute($this->route, array('controller' => $this->controller, 'action' => 'index'));
         }
 
         if ($this->getRequest()->isXmlHttpRequest() || $this->getRequest()->isGet()) {
             return new JsonModel(array($this->getWPService()->remove($this->params()->fromRoute('id'))));
         }
+    }
+
+    /**
+     * @return \WPBase\Form\AbstractWPFormHandle
+     */
+    public function getWPForm()
+    {
+        return $this->getServiceLocator()->get($this->form);
     }
 
     /**
