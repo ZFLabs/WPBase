@@ -2,7 +2,6 @@
 
 namespace WPBase;
 
-use WPBase\Logger\WPLogger;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
@@ -22,7 +21,14 @@ class Module implements BootstrapListenerInterface, ConfigProviderInterface, Aut
 
         $e->getTarget()->getEventManager()->getSharedManager()->attach('Zend\Mvc\Application', 'dispatch.error', function($e){
                 if ($e->getParam('exception')) {
-                    WPLogger::addWriter($e->getParam('exception'));
+
+                    /**
+                     * @var $logger \Zend\Log\Logger
+                     */
+
+                    $logger = $e->getTarget()->getServiceLocator()->get('Zend\Log\Logger');
+                    $logger->log($logger::ERR, "Critical error");
+                    $logger->err($e->getParam('exception'));
                 }
             }
         );
