@@ -9,7 +9,7 @@ use Zend\Form\Annotation\AnnotationBuilder;
 use SpiffyTest\Framework\TestCase;
 use WPBase\Form\AbstractWPFormHandle;
 
-class AbstractWPFormHandleTest extends TestCase
+class AbstractWPFormHandleTest extends \PHPUnit_Framework_TestCase
 {
     public function dataProvider()
     {

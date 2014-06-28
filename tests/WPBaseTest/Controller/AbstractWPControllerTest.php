@@ -1,13 +1,22 @@
 <?php
 
-namespace WPBaseTest\Logger;
+namespace WPBaseTest\Controller;
 
 use SpiffyTest\Controller\AbstractHttpControllerTestCase;
 use Zend\Form\Annotation\AnnotationBuilder;
 
-
 class AbstractWPControllerTest extends AbstractHttpControllerTestCase
 {
+
+    public $controller;
+    public $event;
+
+    /**
+     * @var $request \Zend\Http\Request
+     */
+    public $request;
+    public $response;
+
     public function dataProviderMethods()
     {
         return array(
@@ -23,8 +32,7 @@ class AbstractWPControllerTest extends AbstractHttpControllerTestCase
     {
         $this->assertTrue(class_exists('\\WPBase\\Controller\\AbstractWPController'));
         $this->assertInstanceOf(
-            'Zend\Mvc\Controller\AbstractActionController',
-            $this->getControllerMock()
+                'Zend\Mvc\Controller\AbstractActionController', $this->getControllerMock()
         );
     }
 
@@ -59,7 +67,6 @@ class AbstractWPControllerTest extends AbstractHttpControllerTestCase
         $this->assertInstanceOf('\\WPBase\\Service\\AbstractWPService', $controller->getWPService());
     }
 
-
     public function testVerificaSeRetornaViewModel()
     {
         $controller = $this->getControllerMock();
@@ -74,45 +81,40 @@ class AbstractWPControllerTest extends AbstractHttpControllerTestCase
         $this->assertNull($controller->editarAction());
     }
 
-
-
     private function getControllerMock()
     {
         $parameter = $this->getMockBuilder('\\Zend\\Mvc\\Controller\\Plugin\\Params')->getMock();
         $redirect = $this->getMockBuilder('\\Zend\Mvc\\Controller\\Plugin\\Redirect')->getMock();
 
-        $emMock = $this->getMock('\\WPBase\\Controller\\AbstractWPController',
-            array('params', 'fromRoute', 'getWPService', 'getWPForm', 'redirect', 'toRoute'
-
-            ),array(),'',false);
+        $emMock = $this->getMock('\\WPBase\\Controller\\AbstractWPController', array('params', 'fromRoute', 'getWPService', 'getWPForm', 'redirect', 'toRoute'
+                ), array(), '', false);
 
         $emMock->expects($this->any())
-            ->method('params')
-            ->will($this->returnValue($parameter));
+                ->method('params')
+                ->will($this->returnValue($parameter));
 
         $emMock->expects($this->any())
-            ->method('fromRoute')
-            ->will($this->returnValue(null));
+                ->method('fromRoute')
+                ->will($this->returnValue(null));
 
         $emMock->expects($this->any())
-            ->method('getWPService')
-            ->will($this->returnValue($this->getMockService()));
+                ->method('getWPService')
+                ->will($this->returnValue($this->getMockService()));
 
         $emMock->expects($this->any())
-            ->method('getWPForm')
-            ->will($this->returnValue($this->getMockForm()));
+                ->method('getWPForm')
+                ->will($this->returnValue($this->getMockForm()));
 
         $emMock->expects($this->any())
-            ->method('redirect')
-            ->will($this->returnValue($redirect));
+                ->method('redirect')
+                ->will($this->returnValue($redirect));
 
         $emMock->expects($this->any())
-            ->method('toRoute')
-            ->will($this->returnValue(null));
+                ->method('toRoute')
+                ->will($this->returnValue(null));
 
         return $emMock;
     }
-
 
     /**
      * @return \WPBase\Form\AbstractWPFormHandle
@@ -126,8 +128,8 @@ class AbstractWPControllerTest extends AbstractHttpControllerTestCase
          * @var $class \WPBase\Form\AbstractWPFormHandle
          */
         $class = $this->getMockForAbstractClass('\\WPBase\\Form\\AbstractWPFormHandle', array(
-                new AnnotationBuilder(), $tasck, $this->getMockService()
-            ));
+            new AnnotationBuilder(), $tasck, $this->getMockService()
+        ));
 
         return $class;
     }
@@ -141,8 +143,8 @@ class AbstractWPControllerTest extends AbstractHttpControllerTestCase
          * @var $class \WPBase\Service\AbstractWPService
          */
         $class = $this->getMockForAbstractClass('\\WPBase\\Service\\AbstractWPService', array(
-                $this->getEmMock()
-            ));
+            $this->getEmMock()
+        ));
         $class->setEntity('WPBaseTest\Framework\Entity\Tasck');
 
         return $class;
@@ -152,41 +154,40 @@ class AbstractWPControllerTest extends AbstractHttpControllerTestCase
     {
 
         $employeeRepository = $this->getMockBuilder('\Doctrine\ORM\EntityRepository')
-            ->disableOriginalConstructor()
-            ->getMock();
+                ->disableOriginalConstructor()
+                ->getMock();
 
         $tasck = $this->getMockBuilder('WPBaseTest\Framework\Entity\Tasck')->getMock();
 
-        $emMock = $this->getMock('\Doctrine\ORM\EntityManager',
-            array('persist','flush','getReference','remove', 'getRepository', 'find', 'findAll', 'merge'),array(),'',false);
+        $emMock = $this->getMock('\Doctrine\ORM\EntityManager', array('persist', 'flush', 'getReference', 'remove', 'getRepository', 'find', 'findAll', 'merge'), array(), '', false);
 
         $emMock->expects($this->any())
-            ->method('persist')
-            ->will($this->returnValue(null));
+                ->method('persist')
+                ->will($this->returnValue(null));
 
         $emMock->expects($this->any())
-            ->method('remove')
-            ->will($this->returnValue(null));
+                ->method('remove')
+                ->will($this->returnValue(null));
 
         $emMock->expects($this->any())
-            ->method('merge')
-            ->will($this->returnValue(null));
+                ->method('merge')
+                ->will($this->returnValue(null));
 
         $emMock->expects($this->any())
-            ->method('flush')
-            ->will($this->returnValue(null));
+                ->method('flush')
+                ->will($this->returnValue(null));
 
         $emMock->expects($this->any())
-            ->method('getRepository')
-            ->will($this->returnValue($employeeRepository));
+                ->method('getRepository')
+                ->will($this->returnValue($employeeRepository));
 
         $emMock->expects($this->any())
-            ->method('find')
-            ->will($this->returnValue($tasck));
+                ->method('find')
+                ->will($this->returnValue($tasck));
 
         $emMock->expects($this->any())
-            ->method('findAll')
-            ->will($this->returnValue(null));
+                ->method('findAll')
+                ->will($this->returnValue(null));
 
         return $emMock;
     }

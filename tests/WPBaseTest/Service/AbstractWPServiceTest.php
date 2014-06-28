@@ -2,9 +2,7 @@
 
 namespace WPBaseTest\Service;
 
-use SpiffyTest\Framework\TestCase;
-
-class AbstractWPServiceTest extends TestCase
+class AbstractWPServiceTest extends \PHPUnit_Framework_TestCase
 {
     public function dataProvider()
     {

@@ -2,7 +2,7 @@
 
 return array(
     'loader_paths' => array(
-        'SpiffyTestTest' => __DIR__ . '/../tests' // replace this with your test module if not included in autoloading
+        'WPBaseTest' => __DIR__ . '/../tests' // replace this with your test module if not included in autoloading
     ),
     'modules' => array(
         'SpiffyTest' // replace this with your own module list
@@ -15,5 +15,8 @@ return array(
             'module',
             'vendor',
         ),
+    ),
+    'service_manager' => array(
+
     ),
 );

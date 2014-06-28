@@ -13,4 +13,17 @@ return array(
             'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
         ),
     ),
+    'log' => array(
+        'Zend\Log\Logger' => array(
+            'writers' => array(
+                array(
+                    'name' => 'stream',
+                    'priority' => 1000,
+                    'options' => array(
+                        'stream' => 'data/app.log',
+                    ),
+                ),
+            ),
+        ),
+    ),
 );
