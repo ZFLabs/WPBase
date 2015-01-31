@@ -24,13 +24,13 @@
         "zendframework/zend-form": "2.*",
         "zendframework/zend-mail": "2.*",
         "zendframework/zend-mime": "2.*",
-        "zendframework/zend-test": "2.*",
+        "zendframework/zend-test": "dev-master",
         "zendframework/zend-stdlib": "2.*"
     },
     "minimum-stability": "dev",
     "require-dev": {
         "doctrine/doctrine-orm-module": "dev-master",
-        "phpunit/phpunit": "3.7.x-dev",
+        "phpunit/phpunit": "dev-master",
         "satooshi/php-coveralls": "dev-master",
         "spiffy/spiffy-test": "dev-master"
     },
