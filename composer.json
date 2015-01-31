@@ -18,21 +18,21 @@
     ],
     "require": {
         "php": ">=5.4",
-        "zendframework/zend-mvc": "2.*",
-        "zendframework/zend-serializer": "2.*",
-        "zendframework/zend-version": "2.*",
-        "zendframework/zend-form": "2.*",
-        "zendframework/zend-mail": "2.*",
-        "zendframework/zend-mime": "2.*",
+        "zendframework/zend-mvc": "dev-master",
+        "zendframework/zend-serializer": "dev-master",
+        "zendframework/zend-version": "dev-master",
+        "zendframework/zend-form": "dev-master",
+        "zendframework/zend-mail": "dev-master",
+        "zendframework/zend-mime": "dev-master",
         "zendframework/zend-test": "dev-master",
-        "zendframework/zend-stdlib": "2.*"
+        "zendframework/zend-stdlib": "dev-master",
+        "doctrine/doctrine-orm-module": "dev-master",
+        "spiffy/spiffy-test": "dev-master",
+        "phpunit/phpunit": "3.7.*",
     },
     "minimum-stability": "dev",
     "require-dev": {
-        "doctrine/doctrine-orm-module": "dev-master",
-        "phpunit/phpunit": "dev-master",
-        "satooshi/php-coveralls": "dev-master",
-        "spiffy/spiffy-test": "dev-master"
+        "satooshi/php-coveralls": "dev-master"
     },
     "suggest": {
         "zendframework/zend-developer-tools": "zend-developer-tools if you want to profile operations executed by the ORM during development"
