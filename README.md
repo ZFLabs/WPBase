@@ -1,7 +1,7 @@
 WPBase
 =======================
 
-[![Build Status](https://travis-ci.org/juizmill/WPBase.svg?branch=master)](https://travis-ci.org/juizmill/WPBase)
+[![Build Status](https://travis-ci.org/ZFLabs/WPBase.svg?branch=master)](https://travis-ci.org/ZFLabs/WPBase)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/juizmill/WPBase/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/juizmill/WPBase/?branch=master)
 [![Coverage Status](https://coveralls.io/repos/juizmill/WPBase/badge.png?branch=master)](https://coveralls.io/r/juizmill/WPBase?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/juizmill/wp-base/v/stable.svg)](https://packagist.org/packages/juizmill/wp-base)
