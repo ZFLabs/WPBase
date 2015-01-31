@@ -30,7 +30,7 @@
     "minimum-stability": "dev",
     "require-dev": {
         "doctrine/doctrine-orm-module": "dev-master",
-        "phpunit/phpunit": "dev-master",
+        "phpunit/phpunit": "3.7.*",
         "satooshi/php-coveralls": "dev-master",
         "spiffy/spiffy-test": "dev-master"
     },
