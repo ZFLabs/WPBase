@@ -26,8 +26,8 @@
         "zendframework/zend-mime": "2.*",
         "zendframework/zend-test": "2.*",
         "zendframework/zend-stdlib": "2.*",
-        "doctrine/doctrine-orm-module": "2.*",
-        "spiffy/spiffy-test": "2.*",
+        "doctrine/doctrine-orm-module": "0.8.0",
+        "spiffy/spiffy-test": "0.1.4",
         "phpunit/phpunit": "3.7.x-dev"
     },
     "minimum-stability": "dev",
