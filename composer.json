@@ -18,7 +18,6 @@
     ],
     "require": {
         "php": ">=5.4",
-        "zendframework/zend-mvc": "2.3.x-dev",
         "zendframework/zend-serializer": "2.3.*@dev",
         "zendframework/zend-version": "2.3.*@dev",
         "zendframework/zend-form": "2.3.*@dev",
